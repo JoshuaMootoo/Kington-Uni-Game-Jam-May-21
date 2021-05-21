@@ -28,7 +28,7 @@ public class Background_Scroller : MonoBehaviour
 
     private void Update()
     {
-        scrollSpeed = playerController.speed / 4;
+        scrollSpeed = -playerController.speed / 4;
         rb.velocity = new Vector2(0, scrollSpeed);
         
         if (transform.position.y < -height)

@@ -10,6 +10,7 @@ public class UI_Controller : MonoBehaviour
 
     [Header("Health Bar")]
     [SerializeField] Slider fuelSlider;
+    [SerializeField] Text speedText;
 
 
     private void Start()
@@ -21,5 +22,6 @@ public class UI_Controller : MonoBehaviour
     private void Update()
     {
         fuelSlider.value = playerController.fuel;
+        speedText.text = playerController.speed.ToString();
     }
 }

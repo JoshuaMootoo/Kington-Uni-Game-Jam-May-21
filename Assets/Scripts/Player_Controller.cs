@@ -23,6 +23,9 @@ public class Player_Controller : MonoBehaviour
         PlayerMovement();
 
         fuel -= 0.001f;
+
+        speed += 0.01f;
+        if (speed >= 88) speed = 88;
     }
 
     
@@ -44,13 +47,19 @@ public class Player_Controller : MonoBehaviour
         if (collision.tag == "Fruit")
         {
             fuel += collision.GetComponent<Fuel_Object>().fuel;
-            Destroy(collision);
+            Destroy(collision.gameObject);
         }
 
         if (collision.tag == "Obstacle")
         {
             speed -= 5;
-            Destroy(collision);
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "Boost")
+        {
+            speed += 5;
+            Destroy(collision.gameObject);
         }
     }
 }

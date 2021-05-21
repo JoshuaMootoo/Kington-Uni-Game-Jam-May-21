@@ -11,15 +11,12 @@ public class Game_Controller : MonoBehaviour
     public int score;
     public int totalScore;
 
-    public Sprite boost;
-    public GameObject[] fruits;
-
     GameObject warpObj;
 
-    public Sprite[] currentSprites;
-    public Sprite[] level1Sprites;
-    public Sprite[] level2Sprites;
-    public Sprite[] level3Sprites;
+    public Sprite currentSprites;
+    public Sprite level1Sprites;
+    public Sprite level2Sprites;
+    public Sprite level3Sprites;
 
     public GameObject backgroundObj;
 
@@ -36,33 +33,24 @@ public class Game_Controller : MonoBehaviour
     {
         if (level == 1)
         {
-            for (int i = 0; i < level1Sprites.Length; i++)
-            {
-                currentSprites[i] = level1Sprites[i];
-            }
+                currentSprites = level1Sprites;
         }
         if (level == 2)
         {
-            for (int i = 0; i < level2Sprites.Length; i++)
-            {
-                currentSprites[i] = level2Sprites[i];
-            }
+                currentSprites = level2Sprites;
         }
         if (level == 3)
         {
-            for (int i = 0; i < level3Sprites.Length; i++)
-            {
-                currentSprites[i] = level3Sprites[i];
-            }
+                currentSprites = level3Sprites;
         }
 
 
-        backgroundObj.transform.GetComponent<SpriteRenderer>().sprite = currentSprites[0];
-        backgroundObj.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = currentSprites[0];
-        backgroundObj.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = currentSprites[0];
+        backgroundObj.transform.GetComponent<SpriteRenderer>().sprite = currentSprites;
+        backgroundObj.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = currentSprites;
+        backgroundObj.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = currentSprites;
 
         if (playerController.fuel > 50 && playerController.speed == 88) canTimeTravel = true;
-        if (Input.GetButtonDown("Jump") && canTimeTravel && level != 3) LevelChange();
+        if (Input.GetKeyDown(KeyCode.Space) && canTimeTravel) LevelChange();
     }
 
     void LevelChange()
@@ -73,6 +61,7 @@ public class Game_Controller : MonoBehaviour
         if (countdownTimer <= 0)
         {
             level += 1;
+            playerController.fuel -= 50;
             warpObj.SetActive(false);
         }
     }
