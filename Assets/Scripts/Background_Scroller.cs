@@ -8,7 +8,7 @@ public class Background_Scroller : MonoBehaviour
     public Rigidbody2D rb;
 
     private float height;
-    private float scrollSpeed = -2f;
+    public float scrollSpeed = -2f;
 
     private void Start()
     {
