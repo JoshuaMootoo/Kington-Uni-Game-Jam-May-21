@@ -52,18 +52,21 @@ public class Object_Generator : MonoBehaviour
     {
         GameObject a = Instantiate(boost);
         a.transform.position = new Vector2(Random.Range(-bounds.x, bounds.x), bounds.y);
+        a.transform.SetParent(this.transform);
     }
 
     void SpawnFruit()
     {
         GameObject a = Instantiate(fruits[Random.Range(0, 7)]);
         a.transform.position = new Vector2(Random.Range(-bounds.x, bounds.x), bounds.y);
+        a.transform.SetParent(this.transform);
     }
 
     void SpawnObstacle()
     {
         GameObject a = Instantiate(Obstacles[Random.Range(0, 3)]);
         a.transform.position = new Vector2(Random.Range(-bounds.x, bounds.x), bounds.y);
+        a.transform.SetParent(this.transform);
     }
 
     IEnumerator _SpawnBoost()
